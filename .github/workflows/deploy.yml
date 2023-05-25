@@ -36,7 +36,7 @@ jobs:
         
     - name: newman run
       run: |
-        newman run https://api.postman.com/collections/26096184-380b125a-a6a3-46f6-a617-f342637f9228?access_key=PMAT-01H00644DM66D8E6X53290YGRC'
+        newman run https://api.postman.com/collections/26096184-380b125a-a6a3-46f6-a617-f342637f9228?access_key=PMAT-01H00644DM66D8E6X53290YGRC
     
     - name: Build and tag Docker image
       run: |
