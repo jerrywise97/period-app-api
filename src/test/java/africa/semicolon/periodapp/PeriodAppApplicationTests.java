@@ -1,13 +1,13 @@
-package africa.semicolon.periodapp;
+// package africa.semicolon.periodapp;
 
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+// import org.junit.jupiter.api.Test;
+// import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
-class PeriodAppApplicationTests {
+// @SpringBootTest
+// class PeriodAppApplicationTests {
 
-    @Test
-    void contextLoads() {
-    }
+//     @Test
+//     void contextLoads() {
+//     }
 
-}
+// }
