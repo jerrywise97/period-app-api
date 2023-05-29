@@ -43,7 +43,7 @@ jobs:
     
     - name: Build and tag Docker image
       run: |
-        docker build -t jerrywise97/period-app:${{ github.sha }} .
+        docker build -t jerrywise97/period-app:Latest .
     
     - name: Log in to Docker Hub
       run: |
@@ -51,4 +51,4 @@ jobs:
     
     - name: Push Docker image to Docker Hub
       run: |
-        docker push your-dockerhub-username/your-docker-image-name:${{ github.sha }}
+        docker push your-dockerhub-username/your-docker-image-name:Latest
