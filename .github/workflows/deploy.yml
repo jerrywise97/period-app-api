@@ -9,10 +9,11 @@ on:
 
 jobs:
   build-and-deploy:
-    runs-on: ${{matrix.os}}
-    strategy:
-      matrix:
-        os: [ubuntu-latest, windows-latest, macOS-lastest]
+    runs-on: macos-latest
+#     runs-on: ${{matrix.os}}
+#     strategy:
+#       matrix:
+#         os: [ubuntu-latest, windows-latest, macOS-12]
     
     steps:
     - name: Checkout code
