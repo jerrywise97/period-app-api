@@ -126,8 +126,10 @@ jobs:
      
     - name: Install Heroku CLI
       run: |
-        curl https://cli-assets.heroku.com/install.sh | sh
-        refreshenv 
+       npm install -g heroku-cli
+#       curl https://cli-assets.heroku.com/install.sh | sh
+#       refreshenv 
+           
      
     - name: Heroku Container Registry login
       env: 
