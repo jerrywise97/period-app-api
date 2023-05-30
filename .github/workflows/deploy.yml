@@ -74,7 +74,7 @@ jobs:
         
               
   my-jobs:
-   runs-on: window-lastest
+   runs-on: windows-lastest
 #    build-and-deploy:
 #     runs-on: ${{matrix.os}}
 #     strategy:
