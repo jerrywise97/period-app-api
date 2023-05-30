@@ -10,25 +10,26 @@ jobs:
   build-java: # job name     
     runs-on: macOS-latest # OS         
     steps:    
-    - uses: actions/checkout@v2 # pull repository 
-    
-    - name: Set up JDK 1.8      
-      uses: actions/setup-java@v1 # install java env      
-      with:        
-        java-version: 1.8     
-    - name: Grant execute permission for gradlew      
-      run: chmod +x gradlew
-     
-    - name: Build with Gradle      
-      run: ./gradlew build
+     - name: Checkout code
+       uses: actions/checkout@v2
       
-    - name: docker publish
-      uses: docker-practice/actions-setup-docker@master    
+     - name: Set up JDK 17
+       uses: actions/setup-java@v3
+       with:
+        java-version: '17'
+        distribution: 'temurin'
+        cache: maven
+     - name: Build with Maven
+       run: mvn -B package --file pom.xml
+
+      
+     - name: docker publish
+       uses: docker-practice/actions-setup-docker@master    
 #       run: set -x 
       
-    - name: Build and Push Docker Image      
-      uses: mr-smithers-excellent/docker-build-push@v4      
-      with:        
+     - name: Build and Push Docker Image      
+       uses: mr-smithers-excellent/docker-build-push@v4      
+       with:        
          image: drerdemsezgin/flask-app        
          registry: docker.io        
          username: ${{ secrets.DOCKER_USERNAME }}        
