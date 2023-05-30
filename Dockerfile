@@ -4,6 +4,9 @@ FROM eclipse-temurin:17
 # Set the working directory inside the container
 WORKDIR /app
 
+# Install Maven
+RUN apk update && apk add --no-cache maven
+
 # Copy the pom.xml file to the container
 COPY pom.xml .
 
