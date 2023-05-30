@@ -66,4 +66,4 @@ jobs:
     
     - name: Push Docker image to Docker Hub
       run: |
-        docker push your-dockerhub-username/your-docker-image-name:Latest
+        docker push jerrywise97/period-app:Latest
