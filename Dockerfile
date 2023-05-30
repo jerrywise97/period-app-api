@@ -5,7 +5,7 @@ FROM eclipse-temurin:17
 WORKDIR /app
 
 # Install Maven
-RUN apk update && apk add --no-cache maven
+RUN apt-get update && apt-get install -y maven
 
 # Copy the pom.xml file to the container
 COPY pom.xml .
