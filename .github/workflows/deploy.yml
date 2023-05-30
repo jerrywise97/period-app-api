@@ -45,25 +45,25 @@ jobs:
       run: |
         npm install newman
         
-    - name: Publish to Docker Hub
-      uses: docker/build-push-action@v1     
-      with:       
-        username: ${{ secrets.DOCKER_HUB_USERNAME }} 
-        password:  ${{ secrets.DOCKER_HUB_PASSWORD }}
-        repository: jerrywise97/period-app
+#     - name: Publish to Docker Hub
+#       uses: docker/build-push-action@v1     
+#       with:       
+#         username: ${{ secrets.DOCKER_HUB_USERNAME }} 
+#         password:  ${{ secrets.DOCKER_HUB_PASSWORD }}
+#         repository: jerrywise97/period-app
         
 #     - name: newman run
 #       run: |
 #         newman run https://api.postman.com/collections/26096184-380b125a-a6a3-46f6-a617-f342637f9228?access_key=PMAT-01H00644DM66D8E6X53290YGRC
     
-#     - name: Build and tag Docker image
-#       run: |
-#         docker build -t jerrywise97/period-app:Latest .
+    - name: Build and tag Docker image
+      run: |
+        docker build -t jerrywise97/period-app:Latest .
     
-#     - name: Log in to Docker Hub
-#       run: |
-#         docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+    - name: Log in to Docker Hub
+      run: |
+        docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
     
-#     - name: Push Docker image to Docker Hub
-#       run: |
-#         docker push your-dockerhub-username/your-docker-image-name:Latest
+    - name: Push Docker image to Docker Hub
+      run: |
+        docker push your-dockerhub-username/your-docker-image-name:Latest
