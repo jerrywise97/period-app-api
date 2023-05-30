@@ -53,6 +53,10 @@ jobs:
       run: |
         docker push jerrywise97/period-app:Latest
         
+    - name: Use docker to login into heroku
+      run: |
+        docker login --username=Heroku CLI mav --password=0d8ea88b-721d-4411-86a2-15a7b48271a6 registry.heroku.com
+        
         
         
      
