@@ -57,19 +57,47 @@ jobs:
       run: |
         docker login --username=_ --password=0d8ea88b-721d-4411-86a2-15a7b48271a6 registry.heroku.com
         
+    - name: Heroku Container Registry login
+      env: 
+        HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+      run: heroku container:login 
+    - name: Build and push
+      env:
+        HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+      run: heroku container:push -a ${{ secrets.HEROKU_APP_NAME }} web 
+    - name: Release
+      env:
+        HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+      run: heroku container:release -a ${{ secrets.HEROKU_APP_NAME }} web 
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
 #   - name: docker push to heroku 
    # docker build -t registry.heroku.com/gatest/web .
    # docker push registry.heroku.com/gatest/web
    
-    - name: Deploy to Heroku
-      uses: AkhileshNS/heroku-deploy@v3.12.12
-      with:
-        # This will be used for authentication. You can find it in your heroku homepage account settings
-        heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-       # Email that you use with heroku
-        heroku_email: ${{secrets.HEROKU_EMAIL}}
-      # The appname to use for deploying/updating
-        heroku_app_name: ${{secrets.HEROKU_APP}}
+#     - name: Deploy to Heroku
+#       uses: AkhileshNS/heroku-deploy@v3.12.12
+#       with:
+#         # This will be used for authentication. You can find it in your heroku homepage account settings
+#         heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+#        # Email that you use with heroku
+#         heroku_email: ${{secrets.HEROKU_EMAIL}}
+#       # The appname to use for deploying/updating
+#         heroku_app_name: ${{secrets.HEROKU_APP}}
         
         
      
