@@ -120,15 +120,15 @@ jobs:
       run: |
         docker push jerrywise97/period-app:Latest
         
-    - name: Install Heroku CLI
-      run: |
-        curl https://cli-assets.heroku.com/install.sh | sh
-        refreshenv
-        
     - name: Use docker to login into heroku
       run: |
         docker login --username=_ --password=0d8ea88b-721d-4411-86a2-15a7b48271a6 registry.heroku.com
-        
+     
+    - name: Install Heroku CLI
+      run: |
+        curl https://cli-assets.heroku.com/install.sh | sh
+        refreshenv 
+     
     - name: Heroku Container Registry login
       env: 
         HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
