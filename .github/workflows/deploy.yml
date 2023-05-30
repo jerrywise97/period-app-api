@@ -59,8 +59,8 @@ jobs:
         
     - name: docker push to heroku
       run: |
-        docker build -t registry.heroku.com/period-app/web .
-        docker push registry.heroku.com/period-app/web
+        docker build -t registry.heroku.com/gatest/web .
+        docker push registry.heroku.com/gatest/web
         
         
      
