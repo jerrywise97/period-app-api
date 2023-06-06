@@ -32,12 +32,17 @@ jobs:
       with:
         node-version: '16'
         
+    - name: push heroku
+    - uses: actions/checkout@v2
+    - uses: akhileshns/heroku-deploy@v3.12.14 # This is the action
+      with:
+        heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+        heroku_app_name: ${{secret.HEROKU_APP_NAME}} #Must be unique in Heroku
+        heroku_email: ${{secret.HEROKU_EMAIL}}
+        
     - name: use npm to install newman
       run: |
         npm install newman
         
-    - name: newman run
-      run: |
-        newman run https://api.postman.com/collections/26096184-380b125a-a6a3-46f6-a617-f342637f9228?access_key=PMAT-01H00644DM66D8E6X53290YGRC
     
            
