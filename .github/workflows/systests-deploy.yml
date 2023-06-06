@@ -76,6 +76,9 @@ jobs:
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:Latest .
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:Latest 
         
+#      - name: Update ECS service
+#        run: |
+#         aws ecs update-service --cluster enumV2 --service enum-v2-backend --force-new-deployment
 
 
       
