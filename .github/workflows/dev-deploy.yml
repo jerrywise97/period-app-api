@@ -32,13 +32,25 @@ jobs:
       with:
         node-version: '16'
         
-    - name: push heroku
-    - uses: actions/checkout@v2
-    - uses: akhileshns/heroku-deploy@v3.12.14 # This is the action
-      with:
-        heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-        heroku_app_name: ${{secrets.HEROKU_APP_NAME}} #Must be unique in Heroku
-        heroku_email: ${{secrets.HEROKU_EMAIL}}
+#     - name: push heroku
+#     - uses: actions/checkout@v2
+#     - uses: akhileshns/heroku-deploy@v3.12.14 # This is the action
+#       with:
+#         heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+#         heroku_app_name: ${{secrets.HEROKU_APP_NAME}} #Must be unique in Heroku
+#         heroku_email: ${{secrets.HEROKU_EMAIL}}
+        
+    - name: Install Heroku CLI
+      run: curl https://cli-assets.heroku.com/install.sh | sh
+
+    - name: Log in to Heroku
+      run: heroku login -i
+
+    - name: Set up Heroku Git remote
+      run: heroku git:remote -a ${{secrets.HEROKU_APP_NAME}}
+
+    - name: Push to Heroku
+      run: git push heroku dev
         
     - name: use npm to install newman
       run: |
