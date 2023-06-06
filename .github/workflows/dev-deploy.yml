@@ -43,6 +43,3 @@ jobs:
     - name: use npm to install newman
       run: |
         npm install newman
-        
-    
-           
