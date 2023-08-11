@@ -43,8 +43,8 @@ jobs:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         ECR_REPOSITORY: periodapp
        run: |
-        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:Latest .
-        docker push $ECR_REGISTRY/$ECR_REPOSITORY:Latest 
+        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:latest .
+        docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest 
         
 #      // - name: Download environment variables from S3
 #      //   run: |
