@@ -86,14 +86,14 @@ pipeline {
     
     environment {
         EC2_HOST = '3.90.138.221'
-        SSH_CREDENTIALS = credentials('196f3506-9419-495c-83d5-f60c1d8c4771')
+        SSH_KEY = credentials('196f3506-9419-495c-83d5-f60c1d8c4771')
     }
 
     stages {
         stage('Connect to EC2') {
             steps {
                 script {
-                    sshCommand remote: EC2_HOST, credentialsId: SSH_CREDENTIALS, command: 'ls -la /'
+                    sshCommand remote: EC2_HOST, credentialsId: SSH_KEY, command: 'ls -la /'
                 }
             }
         }
