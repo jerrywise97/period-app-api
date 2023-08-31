@@ -1,14 +1,14 @@
-pipeline {
-    agent any
+// pipeline {
+//     agent any
     
-    environment {
+//     environment {
         // DOCKER_IMAGE = 'jerrywise97/periodapp'
         // BUILD_NUMBER = "latest"
         // DOCKER_REGISTRY_CREDENTIALS = credentials('docker')
-        EC2_USER = 'ec2-user'
-        SSH_KEY = credentials('196f3506-9419-495c-83d5-f60c1d8c4771')
-        EC2_HOST = '3.90.138.221'
-    }
+        // EC2_USER = 'ec2-user'
+        // SSH_KEY = credentials('196f3506-9419-495c-83d5-f60c1d8c4771')
+        // EC2_HOST = '3.90.138.221'
+    // }
     
     // stages {
     //     stage('Clone') {
@@ -61,10 +61,10 @@ pipeline {
 // }
 
 
-            stage('Deploy to EC2') {
-            steps {
-                script{
-                    sshCommand remote: EC2_HOST, credentialsId: SSH_KEY, command: 'ls -la /'
+            // stage('Deploy to EC2') {
+            // steps {
+            //     script{
+            //         sshCommand remote: EC2_HOST, credentialsId: SSH_KEY, command: 'ls -la /'
                     // sshagent(credentials: ['196f3506-9419-495c-83d5-f60c1d8c4771']) {
                     //     def remoteCommand = "ssh -o StrictHostKeyChecking=no -i ${SSH_KEY} ${EC2_USER}@${EC2_HOST}"
                     //     remoteCommand += " docker pull ${DOCKER_IMAGE_NAME}:${BUILD_NUMBER}"
@@ -73,9 +73,29 @@ pipeline {
                     //     remoteCommand += " docker run -d --name your-app-container -p 8891:8891 ${DOCKER_IMAGE_NAME}:${BUILD_NUMBER}"
                         
                     //     sh remoteCommand
-                    }    
-                }
-            }
-        
+//                     }    
+//                 }
+//             }
+// }
+//     }
+// }
+
+
+pipeline {
+    agent any
+    
+    environment {
+        EC2_HOST = '3.90.138.221'
+        SSH_CREDENTIALS = credentials('196f3506-9419-495c-83d5-f60c1d8c4771')
     }
 
+    stages {
+        stage('Connect to EC2') {
+            steps {
+                script {
+                    sshCommand remote: EC2_HOST, credentialsId: SSH_CREDENTIALS, command: 'ls -la /'
+                }
+            }
+        }
+    }
+}
